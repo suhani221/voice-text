@@ -3,14 +3,15 @@ import sys
 import datetime
 import streamlit as st
 from openai import OpenAI
-
-client = OpenAI(api_key="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")
+from dotenv import load_dotenv
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 from openai import OpenAI
 
 client = OpenAI()
 from audio_recorder_streamlit import audio_recorder
 
-OPENAI_API_KEY="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"
+OPENAI_API_KEY=os.getenv("OPENAI_API_KEY")
 
 def transcribe(audio_file):
     transcription = client.audio.transcriptions.create(
